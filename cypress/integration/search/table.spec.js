@@ -24,13 +24,9 @@ context('Table', () => {
 
     it('The table should be enabled to sort the table by first name, last name and country', () => {
         const sortableColumnNames = ['firstName', 'lastName', 'country']
-        
-        // cy.get('.test-input').type('all')
-        //     .get('.test-button').click()
-        //     .wait(10000)
+    
         search('all')
             sortableColumnNames.forEach(columnName => {
-            // Click on other button in order to init the sort order
             cy.get(`.test-sort-by-${sortableColumnNames.find(c => c !== columnName)}`).click()
                 .get(`.test-sort-by-${columnName}`).click()
                 .get(`.test-${columnName}-value`)

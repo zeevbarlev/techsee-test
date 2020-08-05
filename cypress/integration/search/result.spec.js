@@ -8,26 +8,16 @@ context('Results', () => {
   })
 
   it('search all testers work', () => {
-    // cy.get('.test-input').type('all')
-    //   .get('.test-button').click()
-    //   .wait(10000)
     search('all')
       .get('.test-table tr').should('have.length.gt', 0)
   })
 
   it('search name work', () => {
-
-    // cy.get('.test-input').type('all')
-    //   .get('.test-button').click()
-    //   .wait(10000)
     search('all')
       .get('.test-firstName-value').first()
       .then($firstName => {
         const firstName = $firstName.text()
         search(firstName)
-        // cy.get('.test-input').clear().type(firstName)
-        //   .get('.test-button').click()
-        //   .wait(10000)
           .get('.test-table tbody tr').should('have.length', 1)
       })
   })
@@ -56,17 +46,10 @@ context('Results', () => {
                 search(generatedName)
               .get('.test-table tr').should('have.length', 0)
             })
-
-    // cy.get('.test-input').type('wretwer')
-    //   .get('.test-button').click()
-    //   .wait(10000)
   })
 
 
   it('when the input is invalid should show error message', () => {
-    // cy.get('.test-input').type('we/eqew')
-    //   .get('.test-button').click()
-    //   .wait(10000)
     search('we/eqew')
       .get('.test-error-query').should('have.text', 'Temporary error occurred, please try again later')
   })
